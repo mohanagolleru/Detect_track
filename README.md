@@ -2,4 +2,3 @@
 
 **Overview:**
 
-![Image of Plot](SU_Nerfgun_Detect.mp4)
