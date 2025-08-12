@@ -1,8 +1,5 @@
 # Real-Time Object Detection and Tracking with YOLOv8
 
-![Project Status](https://img.shields.io/badge/Status-Complete-green.svg)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-
 ## 🎯 Project Overview
 
 This project implements a custom object detection and tracking system for identifying specific objects, specifically "Nerf Guns" in video streams. The system is built on **YOLOv8** architecture, leveraging transfer learning to fine-tune a pre-trained model on a custom dataset.
