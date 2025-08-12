@@ -5,19 +5,15 @@
 
 ## 🎯 Project Overview
 
-This project implements a custom object detection and tracking system for identifying specific objects—specifically "Nerf Guns" and "persons"—in video streams. The system is built on the powerful **YOLOv8** architecture, leveraging transfer learning to fine-tune a pre-trained model on a custom dataset.
+This project implements a custom object detection and tracking system for identifying specific objects, specifically "Nerf Guns" in video streams. The system is built on **YOLOv8** architecture, leveraging transfer learning to fine-tune a pre-trained model on a custom dataset.
 
-The core goal of this project was to develop a robust system capable of handling real-world challenges such as motion blur, varying lighting conditions, and partial occlusion. The final model demonstrates high detection accuracy and is deployed to perform real-time inference on new video data.
+The core goal of this project was to develop a robust system capable of handling real world challenges such as motion blur, varying lighting conditions, and partial occlusion. The final model demonstrates high detection accuracy and is deployed to perform real-time inference on new video data.
 
 ---
 
 ### Key Components and Methodology
 
-This project utilizes a clear, step-by-step methodology to achieve high-performance object detection.
-
 #### 1. Environment Setup and Library Installation
-
-The project begins by setting up the development environment and installing necessary libraries.
 
 * `import os`: Imports the operating system module for file system interaction.
 * `HOME = os.getcwd()`: Sets the `HOME` variable to the current working directory, which is typically `/content` in a Google Colab environment.
@@ -31,7 +27,7 @@ A custom dataset is prepared and downloaded using the **Roboflow** platform.
 * `!pip install roboflow`: Installs the Roboflow Python library.
 * `rf = Roboflow(api_key="...")`: Initializes a Roboflow object using an API key to access the private dataset.
 * `project = rf.workspace("su-ujhvp").project("3-wbfyt")`: Connects to a specific project within the Roboflow workspace.
-* `dataset = project.version(3).download("yolov8")`: Downloads the third version of the project's dataset in **YOLOv8 format**, which includes images annotated with two classes: "Nerf Gun" and "person."
+* `dataset = project.version(3).download("yolov8")`: Downloads the third version of the project's dataset in **YOLOv8 format**, which includes images annotated with two classes: "Nerf Gun" and "person"
 
 #### 3. Transfer Learning and Model Fine-Tuning
 
@@ -54,7 +50,7 @@ After training, the model's performance is evaluated using a separate validation
 * `!yolo task=detect mode=val model={HOME}/runs/detect/train/weights/best.pt data={dataset.location}/data.yaml`: This command runs the validation mode.
     * **`mode=val`**: Puts the YOLO model in validation mode to evaluate its performance on unseen data.
     * **`model=.../weights/best.pt`**: Specifies the path to the best-performing model checkpoint saved during training.
-* The output shows a **mean Average Precision (mAP) of 86.1%** at an Intersection over Union (IoU) of 50% (`mAP@50`), and a **mAP of 57.8%** across IoU thresholds from 50% to 95% (`mAP@50-95`). This is the key metric demonstrating the model's high accuracy.
+* The output shows a **mean Average Precision (mAP) of 86.1%** at an Intersection over Union (IoU) of 50% (`mAP@50`), and a **mAP of 57.8%** across IoU thresholds from 50% to 95% (`mAP@50-95`). 
 * 
 ## ✨ Key Features
 
@@ -65,42 +61,22 @@ After training, the model's performance is evaluated using a separate validation
 * **Data Augmentation**: A range of data augmentation techniques (e.g., blurring, grayscale conversion, and contrast adjustments via CLAHE) were applied to improve the model's generalization capabilities and robustness to diverse visual conditions.
 * **High Performance**: The final model achieved a mean Average Precision (**mAP@50-95 of 57.8%**) on the validation set, with an impressive **mAP@50 of 91.8%** for the "Nerf Gun" class.
 * **Real-Time Inference**: The trained model can perform rapid object detection on new video streams, demonstrating its utility for real-world applications.
-
 ---
 
-## ⚙️ Technical Workflow
-
-The project's workflow is organized into four main stages:
-
-1.  **Environment Setup**: Dependencies such as `ultralytics` and `roboflow` are installed, and the environment is verified to ensure compatibility with a CUDA-enabled GPU.
-2.  **Dataset Preparation**: The custom dataset is programmatically downloaded from Roboflow and automatically configured for YOLOv8 training.
-3.  **Model Fine-Tuning**: A `yolov8s.pt` model is trained for 120 epochs. The training process generates performance plots and saves the best model weights.
-4.  **Validation & Inference**: The best-performing model is validated to confirm its accuracy and then used to detect objects in a new video file. The processed video, with bounding boxes and class labels, is saved to Google Drive.
-
----
-
-## 🚀 Getting Started
+### Getting Started
 
 To replicate this project, you will need a Google Colab environment with GPU access.
-
-### Prerequisites
-
 * A Google account with access to Google Colab.
 * A Roboflow API key to download the custom dataset.
-
-### Installation and Setup
-
-1.  Open the provided Jupyter Notebook in Google Colab.
-2.  Run the first code block to install `ultralytics` and other required libraries.
-3.  Replace the placeholder API key with your own Roboflow API key to access the dataset.
-4.  Mount your Google Drive to save the processed video.
-5.  Execute the remaining cells sequentially to perform training, validation, and inference.
+*  Open the Jupyter Notebook in Google Colab.
+*  Run the first code block to install `ultralytics` and other required libraries.
+*  Replace the placeholder API key with your own Roboflow API key to access the dataset.
+*  Mount your Google Drive to save the processed video.
+*  Execute the remaining cells sequentially to perform training, validation, and inference.
 
 ---
 
 ## 📊 Results and Performance
-
-The training process generated a series of performance plots and metrics. Key metrics from the validation stage are as follows:
 
 | Class | mAP@50 | mAP@50-95 |
 |---|---|---|
