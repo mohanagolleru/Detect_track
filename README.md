@@ -2,7 +2,7 @@
 
 ## 🎯 Project Overview
 
-This project implements a custom object detection and tracking system for identifying specific objects, specifically "Nerf Guns" in video streams. The system is built on **YOLOv8** architecture, leveraging transfer learning to fine-tune a pre-trained model on a custom dataset.
+This project implements a custom object detection and tracking system for identifying specific objects, specifically "Guns" in video streams. The system is built on **YOLOv8** architecture, leveraging transfer learning to fine-tune a pre-trained model on a custom dataset.
 
 The core goal of this project was to develop a robust system capable of handling real world challenges such as motion blur, varying lighting conditions, and partial occlusion. The final model demonstrates high detection accuracy and is deployed to perform real-time inference on new video data.
 
@@ -24,7 +24,7 @@ A custom dataset is prepared and downloaded using the **Roboflow** platform.
 * `!pip install roboflow`: Installs the Roboflow Python library.
 * `rf = Roboflow(api_key="...")`: Initializes a Roboflow object using an API key to access the private dataset.
 * `project = rf.workspace("su-ujhvp").project("3-wbfyt")`: Connects to a specific project within the Roboflow workspace.
-* `dataset = project.version(3).download("yolov8")`: Downloads the third version of the project's dataset in **YOLOv8 format**, which includes images annotated with two classes: "Nerf Gun" and "person"
+* `dataset = project.version(3).download("yolov8")`: Downloads the third version of the project's dataset in **YOLOv8 format**, which includes images annotated with two classes: "Gun" and "person"
 
 #### 3. Transfer Learning and Model Fine-Tuning
 
@@ -52,10 +52,10 @@ After training, the model's performance is evaluated using a separate validation
 
 * **YOLOv8 Architecture**: Utilizes the state-of-the-art Ultralytics YOLOv8 model, a highly efficient and accurate object detection framework.
 * **Transfer Learning**: Fine-tuned a pre-trained `yolov8s.pt` model on a custom dataset to accelerate training and optimize performance for specific object classes.
-* **Custom Data Integration**: The model was trained on a specialized dataset containing images of "Nerf Guns" and "persons," sourced from Roboflow.
+* **Custom Data Integration**: The model was trained on a specialized dataset containing images of "Guns" and "persons," sourced from Roboflow.
 * **Hyperparameter Optimization**: Key hyperparameters, including IoU thresholds and confidence scores, were carefully tuned during the training process to achieve a high detection rate and minimize false positives.
 * **Data Augmentation**: A range of data augmentation techniques (e.g., blurring, grayscale conversion, and contrast adjustments via CLAHE) were applied to improve the model's generalization capabilities and robustness to diverse visual conditions.
-* **High Performance**: The final model achieved a mean Average Precision (**mAP@50-95 of 57.8%**) on the validation set, with an impressive **mAP@50 of 91.8%** for the "Nerf Gun" class.
+* **High Performance**: The final model achieved a mean Average Precision (**mAP@50-95 of 57.8%**) on the validation set, with an impressive **mAP@50 of 91.8%** for the "Gun" class.
 * **Real-Time Inference**: The trained model can perform rapid object detection on new video streams, demonstrating its utility for real-world applications.
 ---
 
@@ -77,7 +77,7 @@ To replicate this project, you will need a Google Colab environment with GPU acc
 | Class | mAP@50 | mAP@50-95 |
 |---|---|---|
 | **All** | 0.906 | 0.578 |
-| **Nerf Gun** | 0.918 | 0.550 |
+| **Gun** | 0.918 | 0.550 |
 | **person** | 0.894 | 0.606 |
 
 These results confirm that the fine-tuned model performs exceptionally well in detecting the custom object classes.
