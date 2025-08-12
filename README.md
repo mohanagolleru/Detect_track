@@ -50,8 +50,7 @@ After training, the model's performance is evaluated using a separate validation
 * `!yolo task=detect mode=val model={HOME}/runs/detect/train/weights/best.pt data={dataset.location}/data.yaml`: This command runs the validation mode.
     * **`mode=val`**: Puts the YOLO model in validation mode to evaluate its performance on unseen data.
     * **`model=.../weights/best.pt`**: Specifies the path to the best-performing model checkpoint saved during training.
-* The output shows a **mean Average Precision (mAP) of 86.1%** at an Intersection over Union (IoU) of 50% (`mAP@50`), and a **mAP of 57.8%** across IoU thresholds from 50% to 95% (`mAP@50-95`). 
-* 
+
 ## ✨ Key Features
 
 * **YOLOv8 Architecture**: Utilizes the state-of-the-art Ultralytics YOLOv8 model, a highly efficient and accurate object detection framework.
