@@ -60,17 +60,6 @@ To replicate this project, you will need a Google Colab environment with GPU acc
 *  Mount your Google Drive to save the processed video.
 *  Execute the remaining cells sequentially to perform training, validation, and inference.
 
----
-
-## 📊 Results and Performance
-
-| Class | mAP@50 | mAP@50-95 |
-|---|---|---|
-| **All** | 0.906 | 0.578 |
-| **Gun** | 0.918 | 0.550 |
-| **person** | 0.894 | 0.606 |
-
-These results confirm that the fine-tuned model performs exceptionally well in detecting the custom object classes.
 
 
 
